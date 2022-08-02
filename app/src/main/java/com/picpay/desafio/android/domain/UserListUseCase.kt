@@ -2,7 +2,7 @@ package com.picpay.desafio.android.domain
 
 import com.picpay.desafio.android.data.Result
 import com.picpay.desafio.android.data.UserListRepository
-import com.picpay.desafio.android.presentation.UserListViewModel.UserListViewState
+import com.picpay.desafio.android.domain.state.UserListViewState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

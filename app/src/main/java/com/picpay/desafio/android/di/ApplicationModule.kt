@@ -1,8 +1,5 @@
 package com.picpay.desafio.android.di
 
-import android.content.Context
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 import com.picpay.desafio.android.data.PicPayService
 import com.picpay.desafio.android.data.PicPayServiceHelper
 import com.picpay.desafio.android.data.PicPayServiceHelperImpl
@@ -11,7 +8,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -62,11 +58,6 @@ object ApplicationModule {
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
-    }
-
-    @Provides
-    fun provideGlideRequestManager(@ApplicationContext context: Context): RequestManager {
-        return Glide.with(context)
     }
 
     @Provides

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.picpay.desafio.android.domain.UserListUseCase
-import com.picpay.desafio.android.domain.model.User
+import com.picpay.desafio.android.domain.state.UserListViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -28,10 +28,5 @@ class UserListViewModel @Inject constructor(
         viewModelScope.launch {
             _userListState.value = useCase.getUserList(this).value
         }
-    }
-
-    sealed interface UserListViewState {
-        data class Success(val userList: List<User>) : UserListViewState
-        object Error : UserListViewState
     }
 }

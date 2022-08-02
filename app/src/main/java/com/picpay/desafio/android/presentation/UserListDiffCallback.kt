@@ -1,7 +1,6 @@
 package com.picpay.desafio.android.presentation
 
 import androidx.recyclerview.widget.DiffUtil
-import com.picpay.desafio.android.data.model.UserResponse
 import com.picpay.desafio.android.domain.model.User
 
 class UserListDiffCallback(
