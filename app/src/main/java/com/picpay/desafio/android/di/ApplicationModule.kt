@@ -1,5 +1,6 @@
 package com.picpay.desafio.android.di
 
+import com.picpay.desafio.android.BuildConfig.BASE_API_URL
 import com.picpay.desafio.android.data.PicPayService
 import com.picpay.desafio.android.data.PicPayServiceHelper
 import com.picpay.desafio.android.data.PicPayServiceHelperImpl
@@ -10,7 +11,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -21,20 +21,13 @@ import javax.inject.Singleton
 object ApplicationModule {
 
     @Provides
-    fun provideBaseUrl(): String = "https://609a908e0f5a13001721b74e.mockapi.io/picpay/api/"
-
-    @Provides
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-    }
+    fun provideBaseUrl(): String = BASE_API_URL
 
     @Provides
     fun provideOkHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         return OkHttpClient()
             .newBuilder()
-            .addInterceptor(loggingInterceptor)
             .build()
     }
 

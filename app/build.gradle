@@ -48,11 +48,17 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug {}
+        debug {
+
+            buildConfigField "String", "BASE_API_URL", "\"https://609a908e0f5a13001721b74e.mockapi.io/picpay/api/\""
+        }
 
         release {
             minifyEnabled true
             shrinkResources true
+
+            buildConfigField "String", "BASE_API_URL", "\"https://609a908e0f5a13001721b74e.mockapi.io/picpay/api/\""
+
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -91,7 +97,6 @@ dependencies {
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:5.0+"
 
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"

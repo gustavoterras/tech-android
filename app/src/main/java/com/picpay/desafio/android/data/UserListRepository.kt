@@ -16,7 +16,7 @@ interface UserListRepository {
 }
 
 class UserListRepositoryImpl @Inject constructor(
-    private val api: PicPayServiceHelperImpl,
+    private val api: PicPayServiceHelper,
     private val dao: UserResponseDao
 ) : UserListRepository {
 
@@ -35,8 +35,8 @@ class UserListRepositoryImpl @Inject constructor(
                 emit(Result.Failure(Exception("Error")))
             }
         }
-            .catch { emit(Result.Failure(it)) }
-            .flowOn(Dispatchers.IO)
+        .catch { emit(Result.Failure(it)) }
+        .flowOn(Dispatchers.IO)
     }
 
     override fun getUserListLocal(): List<UserResponse>? = dao.getAll()

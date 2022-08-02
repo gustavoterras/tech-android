@@ -11,7 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.databinding.ActivityMainBinding
 import com.picpay.desafio.android.domain.model.User
-import com.picpay.desafio.android.presentation.UserListViewModel.UserListViewState.Success
+import com.picpay.desafio.android.domain.state.UserListViewState.Success
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                     when (userListState) {
                         is Success -> showUserList(userListState.userList)
                         is Error -> showError()
+                        else -> showError()
                     }
                 }
             }
